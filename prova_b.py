@@ -15,7 +15,12 @@ Instruções:
 # Dado um dicionário onde as chaves são nomes de alunos e os valores são as suas notas,
 # retorne um NOVO dicionário contendo apenas os alunos aprovados (nota >= 7.0).
 def filtrar_aprovados(diario_notas):
-    pass
+    aprovados = {}
+
+    for aluno, nota in diario_notas.items():
+        if nota >= 7.0:
+            aprovados[aluno] = nota
+    return aprovados
 
 
 # ==============================================================================
@@ -25,8 +30,7 @@ def filtrar_aprovados(diario_notas):
 # Use a função `sorted` com uma função `lambda` para retornar essa lista 
 # ordenada pelo preço (o segundo elemento da tupla) em ordem crescente.
 def ordenar_por_preco(produtos):
-    pass
-
+    return sorted(produtos, key=lambda x: x[1])
 
 # ==============================================================================
 # Questão 3: Funções Lambda e Map (20 pontos)
@@ -35,7 +39,8 @@ def ordenar_por_preco(produtos):
 # uma nova lista com as temperaturas convertidas para Fahrenheit.
 # Fórmula: F = (C * 9/5) + 32
 def converter_para_fahrenheit(temperaturas_celsius):
-    pass
+    return list(map(lambda x: (x * 1.8) + 32, temperaturas_celsius))
+
 
 
 # ==============================================================================
@@ -49,7 +54,11 @@ def converter_para_fahrenheit(temperaturas_celsius):
 # O passo recursivo subtrai o denominador do numerador e soma 1 ao resultado 
 # da chamada recursiva.
 def divisao_recursiva(numerador, denominador):
-    pass
+    if numerador < denominador:
+        return 0
+    else:
+        return 1 + divisao_recursiva(numerador - denominador, denominador)
+
 
 
 # ==============================================================================
@@ -62,12 +71,11 @@ def divisao_recursiva(numerador, denominador):
 # como argumento padrão numa função de pré-processamento de dados."
 
 RESPOSTA_Q5 = """
-Escreva a sua resposta teórica aqui...
+As listas e os dicionarios sao exemplos de estruturas de dados mutáveis em pyhton, ou seja, ao modificá-lo, nao criamos um novo apenas, modificamos o ja existente
+Já as tuplas são exemplos de estruturas de dados imutáveis, sendo assim, nao podem ser alterados depois que foram criados. Ou seja, ao tentar modificar, irá cria um novo
+O problema é que lista não vai ser recriada, porquê por se tratar de uma lista mutável, ela será alterada ao inves de recriada
 """
 
-if __name__ == "__main__":
-    # Área livre para testes locais do aluno.
-    # Exemplo de teste esperado para a Questão 4:
-    # print(divisao_recursiva(20, 5)) # Deve imprimir 4
-    # print(divisao_recursiva(17, 5)) # Deve imprimir 3
-    pass
+
+print(divisao_recursiva(20, 5))
+print(divisao_recursiva(17, 5))
